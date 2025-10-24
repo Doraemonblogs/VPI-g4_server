@@ -1,1 +1,4 @@
 model/
+activation/
+specific_layer/
+ebm_results/

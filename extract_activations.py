@@ -10,7 +10,7 @@ def prepare_and_save_activations():
     """
     # --- 1. 设置路径 ---
     local_model_path = "model/Qwen2.5-7B-Instruct"
-    data_file_path = "output/email_data_exfiltration_labled.json"
+    data_file_path = "output/email_data_exfiltration_scored.json"
     output_dir = "activation"
     hidden_states_path = os.path.join(output_dir, "hidden_states.pt")
     labels_path = os.path.join(output_dir, "labels.pt")

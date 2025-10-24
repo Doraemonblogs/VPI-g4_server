@@ -15,16 +15,20 @@ from sentence_transformers import SentenceTransformer
 # --- Part 1: EBM和评分模型定义 ---
 
 class EBM(nn.Module):
-    def __init__(self, input_dim, hidden_dims=(1024, 256), output_dim=2):
+    def __init__(self, input_dim, hidden_dim1=1024, hidden_dim2=256, output_dim=2):
         super(EBM, self).__init__()
-        self.model = nn.Sequential(
-            nn.Linear(input_dim, hidden_dims[0]), nn.ReLU(),
-            nn.Linear(hidden_dims[0], hidden_dims[1]), nn.ReLU(),
-            nn.Linear(hidden_dims[1], output_dim),
+        self.net = nn.Sequential(
+            nn.Linear(input_dim, hidden_dim1),
+            nn.GELU(),
+            nn.Dropout(0.5),
+            nn.Linear(hidden_dim1, hidden_dim2),
+            nn.GELU(),
+            nn.Dropout(0.5),
+            nn.Linear(hidden_dim2, output_dim)
         )
 
     def forward(self, x):
-        return self.model(x)
+        return self.net(x)
 
     @torch.no_grad()
     def decision_function(self, x):
