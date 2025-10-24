@@ -1,0 +1,7 @@
+CUDA_VISIBLE_DEVICES=3 python run.py
+
+CUDA_VISIBLE_DEVICES=3 python run_vl.py
+
+export PATH="/HARD-DATA/ZZQ/anaconda3/envs/gzh_vpi/bin:$PATH"
+
+CUDA_VISIBLE_DEVICES=0 python inference.py
