@@ -15,10 +15,10 @@ class EBM(nn.Module):
         self.net = nn.Sequential(
             nn.Linear(input_dim, hidden_dim1),
             nn.GELU(),
-            nn.Dropout(0.5),
+            nn.Dropout(0.3),
             nn.Linear(hidden_dim1, hidden_dim2),
             nn.GELU(),
-            nn.Dropout(0.5),
+            nn.Dropout(0.3),
             nn.Linear(hidden_dim2, output_dim)
         )
 
